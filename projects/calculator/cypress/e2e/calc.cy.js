@@ -1,10 +1,54 @@
 describe('template spec', () => {
-  it('passes', () => {
+  
+  beforeEach(() => {
     cy.visit('http://localhost:3000/')
+  })
+
+  it('prueba sumas', () => {
+    //cy.visit('http://localhost:3000/')
     cy.contains('AC').click()
     cy.contains('2').click()
-    cy.contains('x').click()
+    cy.get(':nth-child(4) > .orange > button').click()
     cy.contains('6').click()
-    cy.get('.component-display').first().should('have.text', '6')
+    cy.contains('=').click()
+    cy.get('.component-display').first().should('have.text', '8')
+  })
+  it('prueba restas', () => {
+    //cy.visit('http://localhost:3000/')
+    cy.contains('AC').click()
+    cy.contains('9').click()
+    cy.get(':nth-child(3) > .orange > button').click()
+    cy.contains('2').click()
+    cy.contains('=').click()
+    cy.get('.component-display').first().should('have.text', '7')
+  })
+  it('prueba multiplicacion', () => {
+    //cy.visit('http://localhost:3000/')
+    cy.contains('AC').click()
+    cy.contains('2').click()
+    cy.get(':nth-child(2) > .orange > button').click()
+    cy.contains('5').click()
+    cy.contains('=').click()
+    cy.get('.component-display').first().should('have.text', '10')
+  })
+  it('prueba division', () => {
+    //cy.visit('http://localhost:3000/')
+    cy.contains('AC').click()
+    cy.contains('2').click()
+    cy.contains('0').click()
+    cy.get(':nth-child(1) > .orange > button').click()
+    cy.contains('4').click()
+    cy.contains('=').click()
+    cy.get('.component-display').first().should('have.text', '5')
+  })
+  it('prueba division entre cero', () => {
+    //cy.visit('http://localhost:3000/')
+    cy.contains('AC').click()
+    cy.contains('2').click()
+    cy.contains('0').click()
+    cy.get(':nth-child(1) > .orange > button').click()
+    cy.contains('0').click()
+    cy.contains('=').click()
+    cy.get('.component-display').first().should('have.text', '5')
   })
 })
